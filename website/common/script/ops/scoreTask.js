@@ -267,7 +267,13 @@ export default function scoreTask (options = {}, req = {}) {
   } else if (task.group && task.group.id && user.guilds.indexOf(task.group.id) === -1
     && user.party._id !== task.group.id) {
     throw new BadRequest('Cannot score task belonging to another user.');
-  }
+  } else if (task.challenge && task.challenge.id && !task.userId
+   && user.challenges.indexOf(task.challenge.id) === -1) {
+   throw new BadRequest('Cannot score task belonging to another user.');
+ }
+
+
+
   // If they're trying to purchase a too-expensive reward, don't allow them to do that.
   if (task.value > user.stats.gp && task.type === 'reward') throw new NotAuthorized(i18n.t('messageNotEnoughGold', req.language));
 

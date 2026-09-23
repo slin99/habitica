@@ -733,7 +733,7 @@ api.scoreTask = {
   method: 'POST',
   url: '/tasks/:taskId/score/:direction',
   middlewares: [authWithHeaders({
-    userFieldsToInclude: ['achievements', 'guilds', 'items.eggs', 'items.food',
+    userFieldsToInclude: ['challenges','achievements', 'guilds', 'items.eggs', 'items.food',
       'items.gear.equipped', 'items.hatchingPotions', 'items.lastDrop', 'items.quests', 'party',
       'purchased.plan', 'stats', 'tasksOrder', 'webhooks'],
   })],
